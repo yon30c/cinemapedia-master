@@ -1,0 +1,1 @@
+export 'search/search_movie_delegate.dart';

@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:cinemapedia/domain/domain.dart';
-import 'package:cinemapedia/presentation/delegate/search_movie_delegate.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
+import '/presentation/providers/providers.dart';
+import '/presentation/delegate/delegates.dart';
 
 class CustomAppBar extends ConsumerWidget {
   const CustomAppBar({super.key});

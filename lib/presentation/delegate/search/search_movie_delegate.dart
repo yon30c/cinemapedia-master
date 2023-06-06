@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 
-import '../../domain/entities/movie.dart';
+import '/domain/entities/movie.dart';
 
 typedef SearchMovieCallBack = Future<List<Movie>> Function(String query);
 

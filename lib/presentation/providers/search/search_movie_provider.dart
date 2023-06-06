@@ -1,6 +1,7 @@
-import 'package:cinemapedia/domain/domain.dart';
-import 'package:cinemapedia/presentation/providers/movies/movies_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cinemapedia/domain/domain.dart';
+
+import '../providers.dart';
 
 final searchQueryProvider = StateProvider<String>((ref) => '');
 
@@ -29,7 +30,6 @@ class SearchedMoviesNotifier extends StateNotifier<List<Movie>> {
 
     state = movies;
 
-    print('buscando');
 
     return movies;
   }

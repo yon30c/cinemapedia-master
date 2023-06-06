@@ -1,9 +1,10 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia/domain/domain.dart';
-import 'package:cinemapedia/presentation/providers/movies/movie_details_provider.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:animate_do/animate_do.dart';
+
+import '/domain/domain.dart';
+import '/presentation/providers/providers.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   static const String name = 'movie-screen';
