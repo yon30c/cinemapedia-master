@@ -34,7 +34,7 @@ class MoviesSlideshow extends StatelessWidget {
           final movie = movies[index];
 
           return GestureDetector(
-            onTap: () => context.push('/movie/${movie.id}'),
+            onTap: () => context.push('/home/0/movie/${movie.id}'),
             child: _Slide(movie: movie));
         },
       ),
