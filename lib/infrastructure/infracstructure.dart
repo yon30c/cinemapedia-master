@@ -2,6 +2,7 @@
 export 'datasources/actor_moviedb_datasource.dart';
 export 'datasources/moviedb_datasource.dart';
 export 'datasources/searchdb_datasource.dart';
+export 'datasources/isar_datasource.dart';
 //? MAPPERS
 export 'mappers/actor_mapper.dart';
 export 'mappers/movie_details_mapper.dart';
@@ -16,4 +17,5 @@ export 'models/moviedb/search_response.dart';
 export 'repositories/actor_repository_impl.dart';
 export 'repositories/movie_repository_impl.dart';
 export 'repositories/search_repository_impl.dart';
+export 'repositories/local_storage_repository_impl.dart';
 

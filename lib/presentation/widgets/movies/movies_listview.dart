@@ -65,7 +65,10 @@ class MoviesListviewState extends ConsumerState<MoviesListview> {
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return FadeInRight(child: _Slide(movie: widget.movies[index]));
+                return FadeInRight(
+                    child: _Slide(
+                        movie: widget.movies[index],
+                      ));
               },
             ),
           ),
@@ -96,7 +99,6 @@ class _Slide extends StatelessWidget {
               child: Image.network(
                 movie.posterPath,
                 width: 150,
-                
                 fit: BoxFit.cover,
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress != null) {
@@ -108,8 +110,8 @@ class _Slide extends StatelessWidget {
                     );
                   }
                   return GestureDetector(
-                    onTap: () => context.push('/home/0/movie/${movie.id}') ,
-                    child: FadeIn(child: child));
+                      onTap: () => context.push('/home/0/movie/${movie.id}'),
+                      child: FadeIn(child: child));
                 },
               ),
             ),

@@ -58,26 +58,26 @@ class HomeViewState extends ConsumerState<HomeView> {
                     subtitle: 'lunes 20',
                     loadNextPage: () => ref
                         .read(nowPlayingMoviesProvider.notifier)
-                        .loadNextPage()),
+                        .loadNextPage(),),
                 MoviesListview(
                     title: 'Proximamente',
                     movies: upcoming,
                     subtitle: 'En cines',
                     loadNextPage: () => ref
                         .read(upcomingMoviesProvider.notifier)
-                        .loadNextPage()),
+                        .loadNextPage(),),
                 MoviesListview(
                     title: 'Populares',
                     movies: popular,
                     loadNextPage: () => ref
                         .read(popularMoviesProvider.notifier)
-                        .loadNextPage()),
+                        .loadNextPage(),),
                 MoviesListview(
                     title: 'Mejor calificado',
                     movies: topRate,
                     loadNextPage: () => ref
                         .read(topRateMoviesProvider.notifier)
-                        .loadNextPage()),
+                        .loadNextPage(),),
               ],
             );
           },
