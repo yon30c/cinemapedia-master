@@ -184,7 +184,8 @@ class _ActorsByMovie extends ConsumerWidget {
   }
 }
 
-final isFavoriteProvider = FutureProvider.family.autoDispose((ref, int movieId) {
+final isFavoriteProvider =
+    FutureProvider.family.autoDispose((ref, int movieId) {
   final localStorageRepository = ref.watch(localStorageRepoProvider);
   return localStorageRepository.isMovieFavorite(movieId);
 });
@@ -202,8 +203,9 @@ class _CustomSliverAppBar extends ConsumerWidget {
     return SliverAppBar(
       actions: [
         IconButton(
-            onPressed: () {
-              ref.watch(localStorageRepoProvider).toggleFavorite(movie);
+            onPressed: () async {
+              // ref.read(localStorageRepoProvider).toggleFavorite(movie);
+              await ref.read(favoriteMoviesProvider.notifier).toggleFavorite(movie);
               ref.invalidate(isFavoriteProvider(movie.id));
             },
             icon: isFavoriteFuture.when(
