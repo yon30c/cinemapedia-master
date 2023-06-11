@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cinemapedia/domain/domain.dart';
 
+import '/domain/domain.dart';
 import '../providers.dart';
 
 final nowPlayingMoviesProvider =
@@ -22,6 +22,10 @@ final topRateMoviesProvider =
   final fetchMoreMovies = ref.watch(movieRepositoryProvider).getTopRate;
 
   return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
+});
+
+final trailerProvider = FutureProvider.family((ref, int id) {
+  return ref.watch(movieRepositoryProvider).getYoutubeVideo(id);
 });
 
 final popularMoviesProvider =

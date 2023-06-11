@@ -11,7 +11,8 @@ class HomeView extends ConsumerStatefulWidget {
   HomeViewState createState() => HomeViewState();
 }
 
-class HomeViewState extends ConsumerState<HomeView> {
+class HomeViewState extends ConsumerState<HomeView>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -23,6 +24,7 @@ class HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final upcoming = ref.watch(upcomingMoviesProvider);
     final popular = ref.watch(popularMoviesProvider);
@@ -53,31 +55,32 @@ class HomeViewState extends ConsumerState<HomeView> {
                 // const CustomAppBar(),
                 MoviesSlideshow(movies: moviesSlideshow),
                 MoviesListview(
-                    title: 'En cines',
-                    movies: nowPlayingMovies,
-                    subtitle: 'lunes 20',
-                    loadNextPage: () => ref
-                        .read(nowPlayingMoviesProvider.notifier)
-                        .loadNextPage(),),
+                  title: 'En cines',
+                  movies: nowPlayingMovies,
+                  subtitle: 'lunes 20',
+                  loadNextPage: () => ref
+                      .read(nowPlayingMoviesProvider.notifier)
+                      .loadNextPage(),
+                ),
                 MoviesListview(
-                    title: 'Proximamente',
-                    movies: upcoming,
-                    subtitle: 'En cines',
-                    loadNextPage: () => ref
-                        .read(upcomingMoviesProvider.notifier)
-                        .loadNextPage(),),
+                  title: 'Proximamente',
+                  movies: upcoming,
+                  subtitle: 'En cines',
+                  loadNextPage: () =>
+                      ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
+                ),
                 MoviesListview(
-                    title: 'Populares',
-                    movies: popular,
-                    loadNextPage: () => ref
-                        .read(popularMoviesProvider.notifier)
-                        .loadNextPage(),),
+                  title: 'Populares',
+                  movies: popular,
+                  loadNextPage: () =>
+                      ref.read(popularMoviesProvider.notifier).loadNextPage(),
+                ),
                 MoviesListview(
-                    title: 'Mejor calificado',
-                    movies: topRate,
-                    loadNextPage: () => ref
-                        .read(topRateMoviesProvider.notifier)
-                        .loadNextPage(),),
+                  title: 'Mejor calificado',
+                  movies: topRate,
+                  loadNextPage: () =>
+                      ref.read(topRateMoviesProvider.notifier).loadNextPage(),
+                ),
               ],
             );
           },
@@ -85,4 +88,7 @@ class HomeViewState extends ConsumerState<HomeView> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

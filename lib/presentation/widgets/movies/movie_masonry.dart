@@ -24,7 +24,7 @@ class _MovieMasonryState extends State<MovieMasonry> {
     super.initState();
     controller.addListener(() {
       if (widget.loadNextPage == null) return;
-      if (controller.position.isScrollingNotifier.value) {
+      if ((controller.position.pixels + 100) >= controller.position.maxScrollExtent ) {
         widget.loadNextPage!();
       }
     });

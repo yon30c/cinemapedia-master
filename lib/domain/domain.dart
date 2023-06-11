@@ -5,7 +5,7 @@ export 'datasources/local_storage_datasource.dart';
 
 export 'entities/actor.dart';
 export 'entities/movie.dart';
-export 'entities/trailer.dart';
+export 'entities/video.dart';
 
 export 'repositories/actors_repository.dart';
 export 'repositories/movies_repository.dart';

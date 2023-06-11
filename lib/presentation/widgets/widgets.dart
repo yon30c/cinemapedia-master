@@ -5,3 +5,4 @@ export 'movies/movie_masonry.dart';
 export 'movies/movie_poster_link.dart';
 export 'shared/custom_appbar.dart';
 export 'shared/custom_navbar.dart';
+export 'videos/movie_trailer.dart';

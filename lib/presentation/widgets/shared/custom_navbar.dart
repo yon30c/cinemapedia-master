@@ -34,7 +34,7 @@ class CustomNavBar extends ConsumerWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.label_outline), label: 'Categorias'),
+              icon: Icon(Icons.local_activity_outlined), label: 'Populares'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_outline), label: 'Favoritos'),
         ]);
