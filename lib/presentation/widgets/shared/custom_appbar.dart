@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cinemapedia/domain/domain.dart';
-import 'package:cinemapedia/presentation/delegate/search_movie_delegate.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
 
 class CustomAppBar extends ConsumerWidget {
   const CustomAppBar({super.key});
@@ -38,22 +34,22 @@ class CustomAppBar extends ConsumerWidget {
                   // final searcheMovies = ref.read(searchRepositoryProvider);
                   // final searchQuery = ref.watch(searchQueryProvider);
 
-                  showSearch<Movie?>(
-                          context: context,
-                          delegate: SearchMovieDelegate(
-                              searchMovieCallBack: ref
-                                  .read(searchedMovieProvider.notifier)
-                                  .searchMoviesByQuery,
-                              searchedMovies: ref
-                                  .watch(searchedMovieProvider.notifier)
-                                  .searchedMovies))
-                      .then((movie) {
-                    if (movie == null) return;
-                    context.push('/movie/${movie.id}');
-                    ref
-                        .read(searchedMovieProvider.notifier)
-                        .addMovies(movie);
-                  });
+                  // showSearch<Movie?>(
+                  //         context: context,
+                  //         delegate: SearchMovieDelegate(
+                  //             searchMovieCallBack: ref
+                  //                 .read(searchedMovieProvider.notifier)
+                  //                 .searchMoviesByQuery,
+                  //             searchedMovies: ref
+                  //                 .watch(searchedMovieProvider.notifier)
+                  //                 .searchedMovies))
+                  //     .then((movie) {
+                  //   if (movie == null) return;
+                  //   context.push('/movie/${movie.id}');
+                  //   ref
+                  //       .read(searchedMovieProvider.notifier)
+                  //       .addMovies(movie);
+                  // });
                 },
                 icon: const Icon(Icons.search))
           ],

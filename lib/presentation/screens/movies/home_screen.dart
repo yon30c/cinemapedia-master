@@ -2,8 +2,10 @@ import 'package:cinemapedia/presentation/widgets/movies/movies_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
+
+import '../../providers/animeProvider.dart';
+import '../../providers/initial_loading.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String name = 'home-screen'; //Escriba el nombre de la ruta
@@ -30,25 +32,26 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   void initState() {
     super.initState();
-    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
-    ref.read(popularMoviesProvider.notifier).loadNextPage();
-    ref.read(topRateMoviesProvider.notifier).loadNextPage();
+    ref.read(recentAnimeProvider.notifier).loadNextPage();
+    ref.read(popularAnimeProvider.notifier).loadNextPage();
+    ref.read(topRateAnimeProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
-    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
-    final upcoming = ref.watch(upcomingMoviesProvider);
-    final popular = ref.watch(popularMoviesProvider);
-    final topRate = ref.watch(topRateMoviesProvider);
-    final moviesSlideshow = ref.watch(moviesSlishowProvider);
-
+    // if ( ref.watch(getepisodesProvider.notifier).episodesArray.isEmpty ) {
+    //   return const FullScreenLoader();
     final initialLoading = ref.watch(initialLoadingProvider);
+    // }
 
     if (initialLoading) {
       return const FullScreenLoader();
     }
+
+    final recentAnimes = ref.watch(recentAnimeProvider);
+    final popularAnimes = ref.watch(popularAnimeProvider);
+    final topRateAnimes = ref.watch(topRateAnimeProvider);
+
 
     return CustomScrollView(
       slivers: [
@@ -66,33 +69,26 @@ class _HomeViewState extends ConsumerState<_HomeView> {
             return Column(
               children: [
                 // const CustomAppBar(),
-                MoviesSlideshow(movies: moviesSlideshow),
+                MoviesSlideshow(animes: topRateAnimes),
                 MoviesListview(
-                    title: 'En cines',
-                    movies: nowPlayingMovies,
-                    subtitle: 'lunes 20',
-                    loadNextPage: () => ref
-                        .read(nowPlayingMoviesProvider.notifier)
-                        .loadNextPage()),
+                  title: 'En emisión',
+                  movies: recentAnimes,
+                  subtitle: 'Recientes',
+                ),
                 MoviesListview(
-                    title: 'Proximamente',
-                    movies: upcoming,
-                    subtitle: 'En cines',
-                    loadNextPage: () => ref
-                        .read(upcomingMoviesProvider.notifier)
-                        .loadNextPage()),
-                MoviesListview(
-                    title: 'Populares',
-                    movies: popular,
-                    loadNextPage: () => ref
-                        .read(popularMoviesProvider.notifier)
-                        .loadNextPage()),
-                MoviesListview(
-                    title: 'Mejor calificado',
-                    movies: topRate,
-                    loadNextPage: () => ref
-                        .read(topRateMoviesProvider.notifier)
-                        .loadNextPage()),
+                    title: 'Destacados',
+                    movies: popularAnimes,
+                  ),
+                // MoviesListview(
+                //     title: 'Populares',
+                //     movies: topRateAnimes,
+                //   ),
+                // MoviesListview(
+                //     title: 'Mejor calificado',
+                //     movies: topRate,
+                //     loadNextPage: () => ref
+                //         .read(topRateMoviesProvider.notifier)
+                //         .loadNextPage()),
               ],
             );
           },
